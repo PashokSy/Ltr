@@ -119,5 +119,14 @@ namespace BooksLibrary
 
             return resultDictionary;
         }
+
+        public ILiterature GetBooks()
+        {
+            foreach (ILiterature book in dictionaryBooks.Values)
+            {
+                return book;
+            }
+            return null;
+        }
     }
 }

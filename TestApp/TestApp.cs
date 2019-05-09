@@ -41,6 +41,7 @@ namespace TestApp
 
             storedBook2.pagesReaded = Int32.Parse(Console.ReadLine());
             booksDictionary1.Save("test.txt");
+
         }
     }
 }
