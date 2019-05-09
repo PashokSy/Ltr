@@ -22,11 +22,11 @@ namespace BooksLibrary
         }
 
         /// <summary>
-        /// Метод сохраняющий новую книгу
+        /// Метод сохраняющий книгу
         /// </summary>
         /// <param name="book">Экземпляр книги</param>
         /// <returns>Удачно ли сохранение</returns>
-        public bool StoreNewBook(ILiterature book)
+        public bool StoreBook(ILiterature book)
         {
             if (dictionaryBooks.ContainsKey(book.title) == true)
                 return false;

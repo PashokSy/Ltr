@@ -126,7 +126,7 @@ namespace BooksLibrary
                 int pagesReaded = Int32.Parse(pagesReadedText);
 
                 resultBook = new Book(title, authorName, authorLastname,
-                                    pagesTotal, tag, filenameExtension);
+                                    pagesTotal, tag, filenameExtension, pagesReaded);
             }
             catch
             {
