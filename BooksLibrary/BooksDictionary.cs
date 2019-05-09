@@ -13,10 +13,10 @@ namespace BooksLibrary
         /// </summary>
         /// <param name="Title">Название книги</param>
         /// <returns>Экземпляр книги</returns>
-        public ILiterature FindBook(string Title)
+        public ILiterature FindBook(string title)
         {
-            if (dictionaryBooks.ContainsKey(Title) == true)
-                return dictionaryBooks[Title];
+            if (dictionaryBooks.ContainsKey(title) == true)
+                return dictionaryBooks[title];
             else
                 return null;
         }
@@ -120,13 +120,13 @@ namespace BooksLibrary
             return resultDictionary;
         }
 
-        public ILiterature GetBooks()
+        /// <summary>
+        /// Клатiй нумер
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, ILiterature>.Enumerator GetEnumerator()
         {
-            foreach (ILiterature book in dictionaryBooks.Values)
-            {
-                return book;
-            }
-            return null;
+            return dictionaryBooks.GetEnumerator();
         }
     }
 }

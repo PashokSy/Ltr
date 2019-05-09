@@ -31,9 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ltr));
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.tablePanel = new System.Windows.Forms.Panel();
-            this.errorLabel = new System.Windows.Forms.RichTextBox();
-            this.errorPanel = new System.Windows.Forms.Panel();
             this.changeButton = new System.Windows.Forms.Button();
+            this.errorPanel = new System.Windows.Forms.Panel();
+            this.errorButton = new System.Windows.Forms.Button();
+            this.errorLabel = new System.Windows.Forms.RichTextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +42,6 @@
             this.pagesReaded = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagesTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progression = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.errorButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.tablePanel.SuspendLayout();
             this.errorPanel.SuspendLayout();
@@ -88,31 +88,6 @@
             this.tablePanel.Size = new System.Drawing.Size(858, 533);
             this.tablePanel.TabIndex = 2;
             // 
-            // errorLabel
-            // 
-            this.errorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.errorLabel.BackColor = System.Drawing.Color.White;
-            this.errorLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.errorLabel.Location = new System.Drawing.Point(54, 3);
-            this.errorLabel.Name = "errorLabel";
-            this.errorLabel.ReadOnly = true;
-            this.errorLabel.Size = new System.Drawing.Size(440, 45);
-            this.errorLabel.TabIndex = 5;
-            this.errorLabel.Text = "<error code>";
-            // 
-            // errorPanel
-            // 
-            this.errorPanel.BackColor = System.Drawing.Color.Transparent;
-            this.errorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.errorPanel.Controls.Add(this.errorButton);
-            this.errorPanel.Controls.Add(this.errorLabel);
-            this.errorPanel.Location = new System.Drawing.Point(352, 3);
-            this.errorPanel.Name = "errorPanel";
-            this.errorPanel.Size = new System.Drawing.Size(500, 55);
-            this.errorPanel.TabIndex = 6;
-            this.errorPanel.Visible = false;
-            // 
             // changeButton
             // 
             this.changeButton.BackColor = System.Drawing.Color.Transparent;
@@ -127,6 +102,48 @@
             this.changeButton.Size = new System.Drawing.Size(55, 55);
             this.changeButton.TabIndex = 7;
             this.changeButton.UseVisualStyleBackColor = false;
+            // 
+            // errorPanel
+            // 
+            this.errorPanel.BackColor = System.Drawing.Color.Transparent;
+            this.errorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.errorPanel.Controls.Add(this.errorButton);
+            this.errorPanel.Controls.Add(this.errorLabel);
+            this.errorPanel.Location = new System.Drawing.Point(352, 3);
+            this.errorPanel.Name = "errorPanel";
+            this.errorPanel.Size = new System.Drawing.Size(500, 55);
+            this.errorPanel.TabIndex = 6;
+            this.errorPanel.Visible = false;
+            // 
+            // errorButton
+            // 
+            this.errorButton.BackColor = System.Drawing.Color.Transparent;
+            this.errorButton.BackgroundImage = global::Ltr.Properties.Resources.error_ico;
+            this.errorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.errorButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.errorButton.FlatAppearance.BorderSize = 0;
+            this.errorButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateGray;
+            this.errorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkCyan;
+            this.errorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.errorButton.Location = new System.Drawing.Point(3, 3);
+            this.errorButton.Name = "errorButton";
+            this.errorButton.Size = new System.Drawing.Size(45, 45);
+            this.errorButton.TabIndex = 8;
+            this.errorButton.UseVisualStyleBackColor = false;
+            this.errorButton.Click += new System.EventHandler(this.ErrorButton_Click);
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.errorLabel.BackColor = System.Drawing.Color.White;
+            this.errorLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.errorLabel.Location = new System.Drawing.Point(54, 3);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.ReadOnly = true;
+            this.errorLabel.Size = new System.Drawing.Size(440, 45);
+            this.errorLabel.TabIndex = 5;
+            this.errorLabel.Text = "<error code>";
             // 
             // deleteButton
             // 
@@ -176,38 +193,21 @@
             this.pagesReaded.HeaderText = "Прочитано страниц";
             this.pagesReaded.Name = "pagesReaded";
             this.pagesReaded.ReadOnly = true;
-            this.pagesReaded.Width = 25;
+            this.pagesReaded.Width = 50;
             // 
             // pagesTotal
             // 
             this.pagesTotal.HeaderText = "Страниц";
             this.pagesTotal.Name = "pagesTotal";
             this.pagesTotal.ReadOnly = true;
-            this.pagesTotal.Width = 25;
+            this.pagesTotal.Width = 50;
             // 
             // progression
             // 
             this.progression.HeaderText = "Прогресс";
             this.progression.Name = "progression";
             this.progression.ReadOnly = true;
-            this.progression.Width = 25;
-            // 
-            // errorButton
-            // 
-            this.errorButton.BackColor = System.Drawing.Color.Transparent;
-            this.errorButton.BackgroundImage = global::Ltr.Properties.Resources.error_ico;
-            this.errorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.errorButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.errorButton.FlatAppearance.BorderSize = 0;
-            this.errorButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateGray;
-            this.errorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkCyan;
-            this.errorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.errorButton.Location = new System.Drawing.Point(3, 3);
-            this.errorButton.Name = "errorButton";
-            this.errorButton.Size = new System.Drawing.Size(45, 45);
-            this.errorButton.TabIndex = 8;
-            this.errorButton.UseVisualStyleBackColor = false;
-            this.errorButton.Click += new System.EventHandler(this.ErrorButton_Click);
+            this.progression.Width = 50;
             // 
             // Ltr
             // 
@@ -238,12 +238,12 @@
         private System.Windows.Forms.Panel errorPanel;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button changeButton;
+        private System.Windows.Forms.Button errorButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn author;
         private System.Windows.Forms.DataGridViewTextBoxColumn pagesReaded;
         private System.Windows.Forms.DataGridViewTextBoxColumn pagesTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn progression;
-        private System.Windows.Forms.Button errorButton;
     }
 }
 

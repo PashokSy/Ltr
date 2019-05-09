@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using BooksLibrary;
 
@@ -23,25 +24,29 @@ namespace TestApp
             booksDictionary.Save("test.txt");
 
             BooksDictionary booksDictionary1 = BooksDictionary.Load("test.txt");
-            
-            ILiterature storedBook1 = booksDictionary1.FindBook("Джава для нубов");
-            if (storedBook1 != null)
-                Console.WriteLine("Book found");
-            else
-                Console.WriteLine("Not FOund");
 
-            storedBook1.authorName = Console.ReadLine();
-            booksDictionary1.Save("test.txt");
+            foreach (KeyValuePair<string, ILiterature> book in booksDictionary1)
+            {
+                Console.WriteLine($"Название книги: {book.Key}; Автор: {book.Value.authorLastname}");
+            }
 
-            ILiterature storedBook2 = booksDictionary1.FindBook("Сишарп для детей");
-            if (storedBook2 != null)
-                Console.WriteLine("Book found");
-            else
-                Console.WriteLine("Not FOund");
+            //ILiterature storedBook1 = booksDictionary1.FindBook("Джава для нубов");
+            //if (storedBook1 != null)
+            //    Console.WriteLine("Book found");
+            //else
+            //    Console.WriteLine("Not FOund");
 
-            storedBook2.pagesReaded = Int32.Parse(Console.ReadLine());
-            booksDictionary1.Save("test.txt");
+            //storedBook1.authorName = Console.ReadLine();
+            //booksDictionary1.Save("test.txt");
 
+            //ILiterature storedBook2 = booksDictionary1.FindBook("Сишарп для детей");
+            //if (storedBook2 != null)
+            //    Console.WriteLine("Book found");
+            //else
+            //    Console.WriteLine("Not FOund");
+
+            //storedBook2.pagesReaded = Int32.Parse(Console.ReadLine());
+            //booksDictionary1.Save("test.txt");
         }
     }
 }

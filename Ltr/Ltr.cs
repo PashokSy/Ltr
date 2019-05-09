@@ -27,7 +27,10 @@ namespace Ltr
             }
             else
             {
-                
+                foreach (KeyValuePair<string, ILiterature> book in booksDictionary)
+                {
+                    this.dataGrid.Rows.Add(book.Key, book.Value.authorLastname, book.Value.pagesReaded, book.Value.pagesTotal);
+                }
             }
         }
 
