@@ -34,6 +34,11 @@ namespace BooksLibrary
         /// Расширение файла книги
         /// </summary>
         public string fileExtension { get; set; }
+        /// <summary>
+        /// Прогресс чтения книги в процентах
+        /// </summary>
+        public string progress { get; set; }
+       
 
         /// <summary>
         /// Создать экземпляр книги
@@ -47,11 +52,11 @@ namespace BooksLibrary
         /// <param name="PagesReaded">Колличество прочитанных страниц</param>
         public Book(
             string Title = "Empty title",
-            string AuthorName = "EmptyAuthorName", 
-            string AuthorLastname = "EmptyAuthorLastName", 
-            int PagesTotal = 0, 
-            string Tag = "EmptyTag", 
-            string FileExtension = "EmptyFileExtension", 
+            string AuthorName = "EmptyAuthorName",
+            string AuthorLastname = "EmptyAuthorLastName",
+            int PagesTotal = 0,
+            string Tag = "EmptyTag",
+            string FileExtension = "EmptyFileExtension",
             int PagesReaded = 0)
         {
             title = Title;
@@ -61,6 +66,38 @@ namespace BooksLibrary
             tag = Tag;
             fileExtension = FileExtension;
             pagesReaded = PagesReaded;
+            progress = getProgress();
+        }
+
+        /// <summary>
+        /// Закрытый перегруженый метод для того что бы можно было высчитывать прогресс и записывать его в файл
+        /// </summary>
+        /// <param name="Progress">Прогрешон. Считается внутри класса или при скитывании с файла</param>
+        /// <param name="Title">Название книги</param>
+        /// <param name="AuthorName">Имя автора книги</param>
+        /// <param name="AuthorLastname">Фамилия автора книги</param>
+        /// <param name="PagesTotal">Колличество страниц книги</param>
+        /// <param name="Tag">Метка книги (например: "C#", "OOP")</param>
+        /// <param name="FileExtension">Разширение имени файла (например: ".pdf", ".djvu")</param>
+        /// <param name="PagesReaded">Колличество прочитанных страниц</param>
+        private Book(
+            string Progress,
+            string Title = "Empty title",
+            string AuthorName = "EmptyAuthorName",
+            string AuthorLastname = "EmptyAuthorLastName",
+            int PagesTotal = 0,
+            string Tag = "EmptyTag",
+            string FileExtension = "EmptyFileExtension",
+            int PagesReaded = 0)
+        {
+            title = Title;
+            authorName = AuthorName;
+            authorLastname = AuthorLastname;
+            pagesTotal = PagesTotal;
+            tag = Tag;
+            fileExtension = FileExtension;
+            pagesReaded = PagesReaded;
+            progress = Progress;
         }
 
         /// <summary>
@@ -69,6 +106,7 @@ namespace BooksLibrary
         /// <param name="textOut">Текстовый поток</param>
         public void Save(System.IO.TextWriter textOut)
         {
+            textOut.WriteLine(progress);
             textOut.WriteLine(title);
             textOut.WriteLine(authorName);
             textOut.WriteLine(authorLastname);
@@ -115,6 +153,7 @@ namespace BooksLibrary
             Book resultBook = null;
             try
             {
+                string progress = textIn.ReadLine();
                 string title = textIn.ReadLine();
                 string authorName = textIn.ReadLine();
                 string authorLastname = textIn.ReadLine();
@@ -125,7 +164,7 @@ namespace BooksLibrary
                 string pagesReadedText = textIn.ReadLine();
                 int pagesReaded = Int32.Parse(pagesReadedText);
 
-                resultBook = new Book(title, authorName, authorLastname,
+                resultBook = new Book(progress, title, authorName, authorLastname,
                                     pagesTotal, tag, filenameExtension, pagesReaded);
             }
             catch
@@ -158,6 +197,24 @@ namespace BooksLibrary
                 if (textIn != null) textIn.Close();
             }
             return resultBook;
+        }
+
+        /// <summary>
+        /// Возвращает прогресс прочтения книги
+        /// </summary>
+        /// <returns></returns>
+        public string getProgress()
+        {
+            try
+            {
+                float persent = (((float)pagesReaded / (float)pagesTotal) * 100.0f);
+                string result = $"{persent:0.00}%";
+                return result;
+            }
+            catch
+            {
+                return "0";
+            }
         }
     }
 }

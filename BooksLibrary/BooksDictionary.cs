@@ -36,6 +36,19 @@ namespace BooksLibrary
         }
 
         /// <summary>
+        /// Метод удаляющий книгу из библиотеки
+        /// </summary>
+        /// <param name="key">Название книги</param>
+        /// <returns>Удачно ли удаление</returns>
+        public bool RemoteBook(string key)
+        {
+            if (dictionaryBooks.ContainsKey(key) != true)            
+                return false;
+            dictionaryBooks.Remove(key);
+            return true;
+        }
+
+        /// <summary>
         /// Метод сохраняющий поток с нигами в библиотеке
         /// </summary>
         /// <param name="textOut">Текстовый поток</param>
