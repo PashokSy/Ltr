@@ -30,21 +30,20 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ltr));
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.tablePanel = new System.Windows.Forms.Panel();
-            this.changeButton = new System.Windows.Forms.Button();
-            this.errorPanel = new System.Windows.Forms.Panel();
-            this.errorButton = new System.Windows.Forms.Button();
-            this.errorLabel = new System.Windows.Forms.RichTextBox();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.addButton = new System.Windows.Forms.Button();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagesReaded = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagesTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progression = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tablePanel = new System.Windows.Forms.Panel();
+            this.editButton = new System.Windows.Forms.Button();
+            this.errorPanel = new System.Windows.Forms.Panel();
+            this.errorButton = new System.Windows.Forms.Button();
+            this.errorLabel = new System.Windows.Forms.RichTextBox();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.tablePanel.SuspendLayout();
             this.errorPanel.SuspendLayout();
@@ -72,14 +71,6 @@
             this.dataGrid.BackgroundColor = System.Drawing.Color.SlateGray;
             this.dataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Title,
@@ -87,27 +78,62 @@
             this.pagesReaded,
             this.pagesTotal,
             this.progression});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGrid.GridColor = System.Drawing.Color.White;
             this.dataGrid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGrid.Location = new System.Drawing.Point(3, 61);
             this.dataGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGrid.ReadOnly = true;
             this.dataGrid.RowHeadersVisible = false;
+            this.dataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGrid.RowTemplate.DividerHeight = 1;
             this.dataGrid.RowTemplate.ReadOnly = true;
+            this.dataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGrid.Size = new System.Drawing.Size(848, 465);
             this.dataGrid.TabIndex = 0;
+            // 
+            // Title
+            // 
+            this.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Title.HeaderText = "Название книги";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            this.Title.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Title.Width = 139;
+            // 
+            // author
+            // 
+            this.author.HeaderText = "Автор";
+            this.author.Name = "author";
+            this.author.ReadOnly = true;
+            // 
+            // pagesReaded
+            // 
+            this.pagesReaded.HeaderText = "Прочитано страниц";
+            this.pagesReaded.Name = "pagesReaded";
+            this.pagesReaded.ReadOnly = true;
+            // 
+            // pagesTotal
+            // 
+            this.pagesTotal.HeaderText = "Всего страниц";
+            this.pagesTotal.Name = "pagesTotal";
+            this.pagesTotal.ReadOnly = true;
+            // 
+            // progression
+            // 
+            this.progression.HeaderText = "Прогресс";
+            this.progression.Name = "progression";
+            this.progression.ReadOnly = true;
             // 
             // tablePanel
             // 
@@ -116,7 +142,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablePanel.BackColor = System.Drawing.Color.Transparent;
             this.tablePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tablePanel.Controls.Add(this.changeButton);
+            this.tablePanel.Controls.Add(this.editButton);
             this.tablePanel.Controls.Add(this.errorPanel);
             this.tablePanel.Controls.Add(this.deleteButton);
             this.tablePanel.Controls.Add(this.dataGrid);
@@ -127,20 +153,21 @@
             this.tablePanel.Size = new System.Drawing.Size(858, 533);
             this.tablePanel.TabIndex = 2;
             // 
-            // changeButton
+            // editButton
             // 
-            this.changeButton.BackColor = System.Drawing.Color.Transparent;
-            this.changeButton.BackgroundImage = global::Ltr.Properties.Resources.change_ico;
-            this.changeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.changeButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.changeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateGray;
-            this.changeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkCyan;
-            this.changeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.changeButton.Location = new System.Drawing.Point(125, 3);
-            this.changeButton.Name = "changeButton";
-            this.changeButton.Size = new System.Drawing.Size(55, 55);
-            this.changeButton.TabIndex = 7;
-            this.changeButton.UseVisualStyleBackColor = false;
+            this.editButton.BackColor = System.Drawing.Color.Transparent;
+            this.editButton.BackgroundImage = global::Ltr.Properties.Resources.change_ico;
+            this.editButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.editButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.editButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateGray;
+            this.editButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkCyan;
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Location = new System.Drawing.Point(125, 3);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(55, 55);
+            this.editButton.TabIndex = 7;
+            this.editButton.UseVisualStyleBackColor = false;
+            this.editButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // errorPanel
             // 
@@ -216,39 +243,6 @@
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // Title
-            // 
-            this.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Title.HeaderText = "Название книги";
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            this.Title.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Title.Width = 182;
-            // 
-            // author
-            // 
-            this.author.HeaderText = "Автор";
-            this.author.Name = "author";
-            this.author.ReadOnly = true;
-            // 
-            // pagesReaded
-            // 
-            this.pagesReaded.HeaderText = "Прочитано страниц";
-            this.pagesReaded.Name = "pagesReaded";
-            this.pagesReaded.ReadOnly = true;
-            // 
-            // pagesTotal
-            // 
-            this.pagesTotal.HeaderText = "Всего страниц";
-            this.pagesTotal.Name = "pagesTotal";
-            this.pagesTotal.ReadOnly = true;
-            // 
-            // progression
-            // 
-            this.progression.HeaderText = "Прогресс";
-            this.progression.Name = "progression";
-            this.progression.ReadOnly = true;
-            // 
             // Ltr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -275,7 +269,7 @@
         #endregion
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.Button changeButton;
+        private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Panel errorPanel;
         private System.Windows.Forms.Panel tablePanel;
         private System.Windows.Forms.Button errorButton;

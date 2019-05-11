@@ -9,11 +9,7 @@ namespace BooksLibrary
         /// <summary>
         /// Название книги
         /// </summary>
-        public string title { get; set; }
-        /// <summary>
-        /// Имя автора книги
-        /// </summary>
-        public string authorName { get; set; }
+        public string title { get; set; }        
         /// <summary>
         /// Фамилия автора книги
         /// </summary>
@@ -37,8 +33,31 @@ namespace BooksLibrary
         /// <summary>
         /// Прогресс чтения книги в процентах
         /// </summary>
-        public string progress { get; set; }
-       
+        public string progress {
+            get
+            {
+                try
+                {
+                    float persent = (((float)pagesReaded / (float)pagesTotal) * 100.0f);
+                    string result = $"{persent:0.00}%";
+                    return result;
+                }
+                catch
+                {
+                    return "0";
+                }
+            }
+            private set { }
+        }
+        /// <summary>
+        /// Путь к файлу книги
+        /// </summary>
+        public string pathToBook { get; set; }
+        /// <summary>
+        /// Коментарии к книге
+        /// </summary>
+        public string commentary { get; set; }
+
 
         /// <summary>
         /// Создать экземпляр книги
@@ -51,22 +70,24 @@ namespace BooksLibrary
         /// <param name="FileExtension">Разширение имени файла (например: ".pdf", ".djvu")</param>
         /// <param name="PagesReaded">Колличество прочитанных страниц</param>
         public Book(
-            string Title = "Empty title",
-            string AuthorName = "EmptyAuthorName",
+            string Title = "Empty title",            
             string AuthorLastname = "EmptyAuthorLastName",
             int PagesTotal = 0,
             string Tag = "EmptyTag",
             string FileExtension = "EmptyFileExtension",
-            int PagesReaded = 0)
+            int PagesReaded = 0,
+            string PathToBook = "EmptyPath",
+            string Commentary = "EmptyCommentary"
+            )
         {
-            title = Title;
-            authorName = AuthorName;
+            title = Title;            
             authorLastname = AuthorLastname;
             pagesTotal = PagesTotal;
             tag = Tag;
             fileExtension = FileExtension;
             pagesReaded = PagesReaded;
-            progress = getProgress();
+            pathToBook = PathToBook;
+            commentary = Commentary;
         }
 
         /// <summary>
@@ -82,22 +103,24 @@ namespace BooksLibrary
         /// <param name="PagesReaded">Колличество прочитанных страниц</param>
         private Book(
             string Progress,
-            string Title = "Empty title",
-            string AuthorName = "EmptyAuthorName",
+            string Title = "Empty title",            
             string AuthorLastname = "EmptyAuthorLastName",
             int PagesTotal = 0,
             string Tag = "EmptyTag",
             string FileExtension = "EmptyFileExtension",
-            int PagesReaded = 0)
+            int PagesReaded = 0,
+            string PathToBook = "EmptyPath",
+            string Commentary = "EmptyCommentary")
         {
-            title = Title;
-            authorName = AuthorName;
+            title = Title;            
             authorLastname = AuthorLastname;
             pagesTotal = PagesTotal;
             tag = Tag;
             fileExtension = FileExtension;
             pagesReaded = PagesReaded;
             progress = Progress;
+            pathToBook = PathToBook;
+            commentary = Commentary;
         }
 
         /// <summary>
@@ -107,13 +130,14 @@ namespace BooksLibrary
         public void Save(System.IO.TextWriter textOut)
         {
             textOut.WriteLine(progress);
-            textOut.WriteLine(title);
-            textOut.WriteLine(authorName);
+            textOut.WriteLine(title);            
             textOut.WriteLine(authorLastname);
             textOut.WriteLine(pagesTotal);
             textOut.WriteLine(tag);
             textOut.WriteLine(fileExtension);
             textOut.WriteLine(pagesReaded);
+            textOut.WriteLine(pathToBook);
+            textOut.WriteLine(commentary);
         }
 
         /// <summary>
@@ -155,7 +179,6 @@ namespace BooksLibrary
             {
                 string progress = textIn.ReadLine();
                 string title = textIn.ReadLine();
-                string authorName = textIn.ReadLine();
                 string authorLastname = textIn.ReadLine();
                 string pagesTotalText = textIn.ReadLine();
                 int pagesTotal = Int32.Parse(pagesTotalText);
@@ -163,9 +186,12 @@ namespace BooksLibrary
                 string filenameExtension = textIn.ReadLine();
                 string pagesReadedText = textIn.ReadLine();
                 int pagesReaded = Int32.Parse(pagesReadedText);
+                string pathToBook = textIn.ReadLine();
+                string commentary = textIn.ReadLine();
 
-                resultBook = new Book(progress, title, authorName, authorLastname,
-                                    pagesTotal, tag, filenameExtension, pagesReaded);
+                resultBook = new Book(progress, title, authorLastname,
+                                    pagesTotal, tag, filenameExtension, pagesReaded,
+                                    pathToBook, commentary);
             }
             catch
             {
@@ -197,24 +223,6 @@ namespace BooksLibrary
                 if (textIn != null) textIn.Close();
             }
             return resultBook;
-        }
-
-        /// <summary>
-        /// Возвращает прогресс прочтения книги
-        /// </summary>
-        /// <returns></returns>
-        public string getProgress()
-        {
-            try
-            {
-                float persent = (((float)pagesReaded / (float)pagesTotal) * 100.0f);
-                string result = $"{persent:0.00}%";
-                return result;
-            }
-            catch
-            {
-                return "0";
-            }
         }
     }
 }

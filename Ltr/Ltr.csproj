@@ -45,11 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddBook.cs">
+    <Compile Include="AddEditBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddBook.Designer.cs">
-      <DependentUpon>AddBook.cs</DependentUpon>
+    <Compile Include="AddEditBook.Designer.cs">
+      <DependentUpon>AddEditBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditReadedPages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditReadedPages.Designer.cs">
+      <DependentUpon>EditReadedPages.cs</DependentUpon>
     </Compile>
     <Compile Include="Ltr.cs">
       <SubType>Form</SubType>
@@ -59,8 +65,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddBook.resx">
-      <DependentUpon>AddBook.cs</DependentUpon>
+    <EmbeddedResource Include="AddEditBook.resx">
+      <DependentUpon>AddEditBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditReadedPages.resx">
+      <DependentUpon>EditReadedPages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ltr.resx">
       <DependentUpon>Ltr.cs</DependentUpon>
