@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.errorLabel = new System.Windows.Forms.Label();
-            this.pagesReadedTexBox = new System.Windows.Forms.TextBox();
             this.pagesReadedLabel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
             this.acceptButton = new System.Windows.Forms.Button();
+            this.readedPagesTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // errorLabel
@@ -44,14 +44,6 @@
             this.errorLabel.TabIndex = 19;
             this.errorLabel.Text = "<error msg>";
             this.errorLabel.Visible = false;
-            // 
-            // pagesReadedTexBox
-            // 
-            this.pagesReadedTexBox.Location = new System.Drawing.Point(17, 81);
-            this.pagesReadedTexBox.Name = "pagesReadedTexBox";
-            this.pagesReadedTexBox.Size = new System.Drawing.Size(390, 33);
-            this.pagesReadedTexBox.TabIndex = 18;
-            this.pagesReadedTexBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PagesReadedTexBox_KeyPress);
             // 
             // pagesReadedLabel
             // 
@@ -70,6 +62,7 @@
             this.closeButton.TabIndex = 16;
             this.closeButton.Text = "Закрыть";
             this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // acceptButton
             // 
@@ -81,19 +74,28 @@
             this.acceptButton.UseVisualStyleBackColor = true;
             this.acceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
+            // readedPagesTextBox
+            // 
+            this.readedPagesTextBox.Location = new System.Drawing.Point(17, 82);
+            this.readedPagesTextBox.Name = "readedPagesTextBox";
+            this.readedPagesTextBox.Size = new System.Drawing.Size(387, 33);
+            this.readedPagesTextBox.TabIndex = 20;
+            this.readedPagesTextBox.Text = " ";
+            this.readedPagesTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ReadedPagesTextBox_KeyPress);
+            // 
             // EditReadedPages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(416, 187);
+            this.Controls.Add(this.readedPagesTextBox);
             this.Controls.Add(this.errorLabel);
-            this.Controls.Add(this.pagesReadedTexBox);
             this.Controls.Add(this.pagesReadedLabel);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.acceptButton);
             this.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "EditReadedPages";
             this.Text = "Редактировать колличество страниц";
@@ -105,9 +107,9 @@
         #endregion
 
         private System.Windows.Forms.Label errorLabel;
-        private System.Windows.Forms.TextBox pagesReadedTexBox;
         private System.Windows.Forms.Label pagesReadedLabel;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button acceptButton;
+        private System.Windows.Forms.TextBox readedPagesTextBox;
     }
 }

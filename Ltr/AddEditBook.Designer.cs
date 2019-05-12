@@ -98,9 +98,10 @@
             // 
             // addEditButton
             // 
+            this.addEditButton.AutoSize = true;
             this.addEditButton.Location = new System.Drawing.Point(17, 499);
             this.addEditButton.Name = "addEditButton";
-            this.addEditButton.Size = new System.Drawing.Size(120, 50);
+            this.addEditButton.Size = new System.Drawing.Size(140, 50);
             this.addEditButton.TabIndex = 9;
             this.addEditButton.UseVisualStyleBackColor = true;
             this.addEditButton.Click += new System.EventHandler(this.AddEditButton_Click);
@@ -135,7 +136,7 @@
             // noteLabel
             // 
             this.noteLabel.AutoSize = true;
-            this.noteLabel.ForeColor = System.Drawing.Color.Maroon;
+            this.noteLabel.ForeColor = System.Drawing.Color.Black;
             this.noteLabel.Location = new System.Drawing.Point(12, 9);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(542, 25);
