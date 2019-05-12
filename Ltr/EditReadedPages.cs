@@ -43,9 +43,7 @@ namespace Ltr
                     Title: book.title,
                     AuthorLastname: book.authorLastname,
                     PagesTotal: book.pagesTotal,
-                    PagesReaded: (readedPagesTextBox.Text.Length == 0) ? 0 : Int32.Parse(readedPagesTextBox.Text),
-                    Tag: book.tag,
-                    PathToBook: book.pathToBook);
+                    PagesReaded: (readedPagesTextBox.Text.Length == 0) ? 0 : Int32.Parse(readedPagesTextBox.Text));
                                 
                 parentForm.library.RemoteBook((string)parentForm.dataGrid.CurrentRow.Cells[0].Value);
                 parentForm.dataGrid.Rows.Remove(parentForm.dataGrid.CurrentRow);

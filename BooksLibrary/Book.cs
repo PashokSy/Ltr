@@ -23,14 +23,6 @@ namespace BooksLibrary
         /// </summary>
         public int pagesReaded { get; set; }
         /// <summary>
-        /// Метка книги
-        /// </summary>
-        public string tag { get; set; }
-        /// <summary>
-        /// Расширение файла книги
-        /// </summary>
-        public string fileExtension { get; set; }
-        /// <summary>
         /// Прогресс чтения книги в процентах
         /// </summary>
         public string progress {
@@ -50,44 +42,38 @@ namespace BooksLibrary
             private set { }
         }
         /// <summary>
-        /// Путь к файлу книги
-        /// </summary>
-        public string pathToBook { get; set; }
-        /// <summary>
         /// Коментарии к книге
         /// </summary>
         public string commentary { get; set; }
+        /// <summary>
+        /// Статус прочтения книги
+        /// </summary>
+        public string status { get; set; }
 
 
         /// <summary>
         /// Создать экземпляр книги
         /// </summary>
         /// <param name="Title">Название книги</param>
-        /// <param name="AuthorName">Имя автора книги</param>
         /// <param name="AuthorLastname">Фамилия автора книги</param>
         /// <param name="PagesTotal">Колличество страниц книги</param>
-        /// <param name="Tag">Метка книги (например: "C#", "OOP")</param>
-        /// <param name="FileExtension">Разширение имени файла (например: ".pdf", ".djvu")</param>
         /// <param name="PagesReaded">Колличество прочитанных страниц</param>
+        /// <param name="Commentary">Комментарий к книге</param>
+        /// <param name="Status">На каком этапе чтения книга</param>
         public Book(
-            string Title = "Empty title",            
+            string Title = "Empty title",
             string AuthorLastname = "EmptyAuthorLastName",
             int PagesTotal = 0,
-            string Tag = "EmptyTag",
-            string FileExtension = "EmptyFileExtension",
             int PagesReaded = 0,
-            string PathToBook = "EmptyPath",
-            string Commentary = "EmptyCommentary"
-            )
+            string Commentary = "EmptyCommentary",
+            string Status = "Может прочту")
         {
             title = Title;            
             authorLastname = AuthorLastname;
             pagesTotal = PagesTotal;
-            tag = Tag;
-            fileExtension = FileExtension;
             pagesReaded = PagesReaded;
-            pathToBook = PathToBook;
             commentary = Commentary;
+            status = Status;
         }
 
         /// <summary>
@@ -95,32 +81,27 @@ namespace BooksLibrary
         /// </summary>
         /// <param name="Progress">Прогрешон. Считается внутри класса или при скитывании с файла</param>
         /// <param name="Title">Название книги</param>
-        /// <param name="AuthorName">Имя автора книги</param>
         /// <param name="AuthorLastname">Фамилия автора книги</param>
         /// <param name="PagesTotal">Колличество страниц книги</param>
-        /// <param name="Tag">Метка книги (например: "C#", "OOP")</param>
-        /// <param name="FileExtension">Разширение имени файла (например: ".pdf", ".djvu")</param>
         /// <param name="PagesReaded">Колличество прочитанных страниц</param>
+        /// <param name="Commentary">Комментарий к книге</param>
+        /// <param name="Status">Книга мастрид?</param>
         private Book(
             string Progress,
             string Title = "Empty title",            
             string AuthorLastname = "EmptyAuthorLastName",
             int PagesTotal = 0,
-            string Tag = "EmptyTag",
-            string FileExtension = "EmptyFileExtension",
             int PagesReaded = 0,
-            string PathToBook = "EmptyPath",
-            string Commentary = "EmptyCommentary")
+            string Commentary = "EmptyCommentary",
+            string Status = "Может прочту")
         {
             title = Title;            
             authorLastname = AuthorLastname;
             pagesTotal = PagesTotal;
-            tag = Tag;
-            fileExtension = FileExtension;
             pagesReaded = PagesReaded;
             progress = Progress;
-            pathToBook = PathToBook;
             commentary = Commentary;
+            status = Status;
         }
 
         /// <summary>
@@ -133,11 +114,9 @@ namespace BooksLibrary
             textOut.WriteLine(title);            
             textOut.WriteLine(authorLastname);
             textOut.WriteLine(pagesTotal);
-            textOut.WriteLine(tag);
-            textOut.WriteLine(fileExtension);
             textOut.WriteLine(pagesReaded);
-            textOut.WriteLine(pathToBook);
             textOut.WriteLine(commentary);
+            textOut.WriteLine(status);
         }
 
         /// <summary>
@@ -182,16 +161,13 @@ namespace BooksLibrary
                 string authorLastname = textIn.ReadLine();
                 string pagesTotalText = textIn.ReadLine();
                 int pagesTotal = Int32.Parse(pagesTotalText);
-                string tag = textIn.ReadLine();
-                string filenameExtension = textIn.ReadLine();
                 string pagesReadedText = textIn.ReadLine();
                 int pagesReaded = Int32.Parse(pagesReadedText);
-                string pathToBook = textIn.ReadLine();
                 string commentary = textIn.ReadLine();
+                string status = textIn.ReadLine();
 
                 resultBook = new Book(progress, title, authorLastname,
-                                    pagesTotal, tag, filenameExtension, pagesReaded,
-                                    pathToBook, commentary);
+                                    pagesTotal, pagesReaded, commentary, status);
             }
             catch
             {

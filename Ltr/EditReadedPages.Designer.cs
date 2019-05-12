@@ -98,6 +98,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "EditReadedPages";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактировать колличество страниц";
             this.ResumeLayout(false);
             this.PerformLayout();

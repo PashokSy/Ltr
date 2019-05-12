@@ -83,6 +83,26 @@ namespace Ltr.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap black {
+            get {
+                object obj = ResourceManager.GetObject("black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bookmark_ico {
+            get {
+                object obj = ResourceManager.GetObject("bookmark_ico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap change_ico {
             get {
                 object obj = ResourceManager.GetObject("change_ico", resourceCulture);
@@ -96,6 +116,16 @@ namespace Ltr.Properties {
         internal static System.Drawing.Bitmap delete_ico {
             get {
                 object obj = ResourceManager.GetObject("delete_ico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap detective_raccoon {
+            get {
+                object obj = ResourceManager.GetObject("detective_raccoon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +156,16 @@ namespace Ltr.Properties {
         internal static System.Drawing.Bitmap refresh_ico {
             get {
                 object obj = ResourceManager.GetObject("refresh_ico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_ico {
+            get {
+                object obj = ResourceManager.GetObject("search_ico", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

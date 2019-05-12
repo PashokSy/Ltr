@@ -40,11 +40,10 @@
             this.pagesReadedLabel = new System.Windows.Forms.Label();
             this.noteLabel = new System.Windows.Forms.Label();
             this.errorLabel = new System.Windows.Forms.Label();
-            this.tagTextBox = new System.Windows.Forms.TextBox();
-            this.tagLabel = new System.Windows.Forms.Label();
-            this.setPathButton = new System.Windows.Forms.Button();
-            this.pathTextBox = new System.Windows.Forms.TextBox();
-            this.pathLabel = new System.Windows.Forms.Label();
+            this.commentaryTextBox = new System.Windows.Forms.TextBox();
+            this.commentaryLabel = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -153,46 +152,43 @@
             this.errorLabel.Text = "<error msg>";
             this.errorLabel.Visible = false;
             // 
-            // tagTextBox
+            // commentaryTextBox
             // 
-            this.tagTextBox.Location = new System.Drawing.Point(17, 351);
-            this.tagTextBox.Name = "tagTextBox";
-            this.tagTextBox.Size = new System.Drawing.Size(580, 33);
-            this.tagTextBox.TabIndex = 16;
+            this.commentaryTextBox.Location = new System.Drawing.Point(17, 351);
+            this.commentaryTextBox.Name = "commentaryTextBox";
+            this.commentaryTextBox.Size = new System.Drawing.Size(580, 33);
+            this.commentaryTextBox.TabIndex = 16;
             // 
-            // tagLabel
+            // commentaryLabel
             // 
-            this.tagLabel.AutoSize = true;
-            this.tagLabel.Location = new System.Drawing.Point(12, 323);
-            this.tagLabel.Name = "tagLabel";
-            this.tagLabel.Size = new System.Drawing.Size(136, 25);
-            this.tagLabel.TabIndex = 15;
-            this.tagLabel.Text = "Метка книжки";
+            this.commentaryLabel.AutoSize = true;
+            this.commentaryLabel.Location = new System.Drawing.Point(12, 323);
+            this.commentaryLabel.Name = "commentaryLabel";
+            this.commentaryLabel.Size = new System.Drawing.Size(199, 25);
+            this.commentaryLabel.TabIndex = 15;
+            this.commentaryLabel.Text = "Комментарий к книге";
             // 
-            // setPathButton
+            // statusLabel
             // 
-            this.setPathButton.Location = new System.Drawing.Point(560, 414);
-            this.setPathButton.Name = "setPathButton";
-            this.setPathButton.Size = new System.Drawing.Size(37, 33);
-            this.setPathButton.TabIndex = 17;
-            this.setPathButton.Text = "button1";
-            this.setPathButton.UseVisualStyleBackColor = true;
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(12, 387);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(188, 25);
+            this.statusLabel.TabIndex = 18;
+            this.statusLabel.Text = "Статус чтения книги";
             // 
-            // pathTextBox
+            // statusComboBox
             // 
-            this.pathTextBox.Location = new System.Drawing.Point(17, 415);
-            this.pathTextBox.Name = "pathTextBox";
-            this.pathTextBox.Size = new System.Drawing.Size(537, 33);
-            this.pathTextBox.TabIndex = 19;
-            // 
-            // pathLabel
-            // 
-            this.pathLabel.AutoSize = true;
-            this.pathLabel.Location = new System.Drawing.Point(12, 387);
-            this.pathLabel.Name = "pathLabel";
-            this.pathLabel.Size = new System.Drawing.Size(136, 25);
-            this.pathLabel.TabIndex = 18;
-            this.pathLabel.Text = "Путь к книжке";
+            this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.statusComboBox.FormattingEnabled = true;
+            this.statusComboBox.Items.AddRange(new object[] {
+            "Сейчас читаю",
+            "Обязательно прочту",
+            "Может прочту"});
+            this.statusComboBox.Location = new System.Drawing.Point(17, 415);
+            this.statusComboBox.Name = "statusComboBox";
+            this.statusComboBox.Size = new System.Drawing.Size(580, 33);
+            this.statusComboBox.TabIndex = 19;
             // 
             // AddEditBook
             // 
@@ -200,11 +196,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(609, 568);
-            this.Controls.Add(this.pathTextBox);
-            this.Controls.Add(this.pathLabel);
-            this.Controls.Add(this.setPathButton);
-            this.Controls.Add(this.tagTextBox);
-            this.Controls.Add(this.tagLabel);
+            this.Controls.Add(this.statusComboBox);
+            this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.commentaryTextBox);
+            this.Controls.Add(this.commentaryLabel);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.noteLabel);
             this.Controls.Add(this.pagesReadedTexBox);
@@ -222,6 +217,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "AddEditBook";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,10 +237,9 @@
         private System.Windows.Forms.Label pagesReadedLabel;
         private System.Windows.Forms.Label noteLabel;
         private System.Windows.Forms.Label errorLabel;
-        private System.Windows.Forms.TextBox tagTextBox;
-        private System.Windows.Forms.Label tagLabel;
-        private System.Windows.Forms.Button setPathButton;
-        private System.Windows.Forms.TextBox pathTextBox;
-        private System.Windows.Forms.Label pathLabel;
+        private System.Windows.Forms.TextBox commentaryTextBox;
+        private System.Windows.Forms.Label commentaryLabel;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.ComboBox statusComboBox;
     }
 }
