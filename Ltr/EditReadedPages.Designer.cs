@@ -95,11 +95,13 @@
             this.Controls.Add(this.acceptButton);
             this.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "EditReadedPages";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактировать колличество страниц";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EditReadedPages_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -59,6 +59,7 @@ namespace Ltr
                 parentForm.dataGrid.ClearSelection();
                 parentForm.dataGrid.Rows[RememberRowIndex].Cells[0].Selected = true;
                 parentForm.dataGrid.CurrentCell = parentForm.dataGrid.Rows[RememberRowIndex].Cells[0];
+                this.Close();
             }
             catch (Exception exception)
             {
@@ -77,6 +78,12 @@ namespace Ltr
             {
                 e.Handled = true;
             }
+        }
+
+        private void EditReadedPages_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                AcceptButton_Click(sender, e);
         }
     }
 }

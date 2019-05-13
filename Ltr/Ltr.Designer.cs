@@ -38,45 +38,27 @@
             this.pagesTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progression = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tablePanel = new System.Windows.Forms.Panel();
-            this.returnChangesButton = new System.Windows.Forms.Button();
-            this.cancelChangesButton = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
-            this.errorPanel = new System.Windows.Forms.Panel();
-            this.errorLabel = new System.Windows.Forms.RichTextBox();
-            this.menu = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьБилиотекуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отменитьИзмененияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вернутьИзмененияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.выбратьВсеКнигиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.размерОкнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.панельУправленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.кнопкаДобавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.кнопкаУдалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.кнопкаИзменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.кнопкаПрочитаноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.приветствиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editReadedPagesButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
+            this.errorPanel = new System.Windows.Forms.Panel();
             this.errorButton = new System.Windows.Forms.Button();
+            this.errorLabel = new System.Windows.Forms.RichTextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.menu = new System.Windows.Forms.MenuStrip();
+            this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьКнигуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьКнигуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.редактироватьКнигуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.редактироватьКолвоПрочитанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выбратьВсеКнигиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.приветствиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.tablePanel.SuspendLayout();
             this.errorPanel.SuspendLayout();
@@ -176,8 +158,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablePanel.BackColor = System.Drawing.Color.Transparent;
             this.tablePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tablePanel.Controls.Add(this.returnChangesButton);
-            this.tablePanel.Controls.Add(this.cancelChangesButton);
             this.tablePanel.Controls.Add(this.searchBox);
             this.tablePanel.Controls.Add(this.statusComboBox);
             this.tablePanel.Controls.Add(this.editReadedPagesButton);
@@ -191,24 +171,6 @@
             this.tablePanel.Name = "tablePanel";
             this.tablePanel.Size = new System.Drawing.Size(858, 524);
             this.tablePanel.TabIndex = 2;
-            // 
-            // returnChangesButton
-            // 
-            this.returnChangesButton.Location = new System.Drawing.Point(456, 33);
-            this.returnChangesButton.Name = "returnChangesButton";
-            this.returnChangesButton.Size = new System.Drawing.Size(45, 25);
-            this.returnChangesButton.TabIndex = 6;
-            this.returnChangesButton.Text = "вернуть";
-            this.returnChangesButton.UseVisualStyleBackColor = true;
-            // 
-            // cancelChangesButton
-            // 
-            this.cancelChangesButton.Location = new System.Drawing.Point(406, 33);
-            this.cancelChangesButton.Name = "cancelChangesButton";
-            this.cancelChangesButton.Size = new System.Drawing.Size(44, 25);
-            this.cancelChangesButton.TabIndex = 7;
-            this.cancelChangesButton.Text = "отменить";
-            this.cancelChangesButton.UseVisualStyleBackColor = true;
             // 
             // searchBox
             // 
@@ -226,223 +188,13 @@
             "Сейчас читаю",
             "Обязательно прочту",
             "Может прочту",
-            "Показать все книги"});
+            "Показать все книги",
+            "Прочитано"});
             this.statusComboBox.Location = new System.Drawing.Point(247, 33);
             this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(153, 25);
+            this.statusComboBox.Size = new System.Drawing.Size(254, 25);
             this.statusComboBox.TabIndex = 9;
             this.statusComboBox.SelectedValueChanged += new System.EventHandler(this.StatusComboBox_SelectedValueChanged);
-            // 
-            // errorPanel
-            // 
-            this.errorPanel.BackColor = System.Drawing.Color.Transparent;
-            this.errorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.errorPanel.Controls.Add(this.errorButton);
-            this.errorPanel.Controls.Add(this.errorLabel);
-            this.errorPanel.Location = new System.Drawing.Point(507, 3);
-            this.errorPanel.Name = "errorPanel";
-            this.errorPanel.Size = new System.Drawing.Size(345, 55);
-            this.errorPanel.TabIndex = 6;
-            this.errorPanel.Visible = false;
-            // 
-            // errorLabel
-            // 
-            this.errorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.errorLabel.BackColor = System.Drawing.Color.White;
-            this.errorLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.errorLabel.Location = new System.Drawing.Point(54, 3);
-            this.errorLabel.Name = "errorLabel";
-            this.errorLabel.ReadOnly = true;
-            this.errorLabel.Size = new System.Drawing.Size(285, 45);
-            this.errorLabel.TabIndex = 5;
-            this.errorLabel.Text = "<error code>";
-            // 
-            // menu
-            // 
-            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.правкаToolStripMenuItem,
-            this.видToolStripMenuItem,
-            this.справкаToolStripMenuItem});
-            this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(884, 24);
-            this.menu.TabIndex = 5;
-            this.menu.Text = "menuStrip1";
-            // 
-            // файлToolStripMenuItem
-            // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
-            this.удалитьБилиотекуToolStripMenuItem,
-            this.выходToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(221, 22);
-            this.toolStripMenuItem3.Text = "Путь к библиотеке";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(221, 22);
-            this.toolStripMenuItem4.Text = "Файл с настройками";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(221, 22);
-            this.toolStripMenuItem5.Text = "Сохранить библиотеку";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(221, 22);
-            this.toolStripMenuItem6.Text = "Сохранить библиотеку как";
-            // 
-            // удалитьБилиотекуToolStripMenuItem
-            // 
-            this.удалитьБилиотекуToolStripMenuItem.Name = "удалитьБилиотекуToolStripMenuItem";
-            this.удалитьБилиотекуToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.удалитьБилиотекуToolStripMenuItem.Text = "Удалить билиотеку";
-            // 
-            // выходToolStripMenuItem
-            // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.ShortcutKeyDisplayString = "Alt+Q";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
-            // 
-            // правкаToolStripMenuItem
-            // 
-            this.правкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.отменитьИзмененияToolStripMenuItem,
-            this.вернутьИзмененияToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.добавитьКнигуToolStripMenuItem,
-            this.удалитьКнигуToolStripMenuItem,
-            this.редактироватьКнигуToolStripMenuItem,
-            this.редактироватьКолвоПрочитанныхToolStripMenuItem,
-            this.выбратьВсеКнигиToolStripMenuItem});
-            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
-            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.правкаToolStripMenuItem.Text = "Правка";
-            // 
-            // отменитьИзмененияToolStripMenuItem
-            // 
-            this.отменитьИзмененияToolStripMenuItem.Name = "отменитьИзмененияToolStripMenuItem";
-            this.отменитьИзмененияToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.отменитьИзмененияToolStripMenuItem.Text = "Отменить изменения";
-            // 
-            // вернутьИзмененияToolStripMenuItem
-            // 
-            this.вернутьИзмененияToolStripMenuItem.Name = "вернутьИзмененияToolStripMenuItem";
-            this.вернутьИзмененияToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.вернутьИзмененияToolStripMenuItem.Text = "Вернуть изменения";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(225, 6);
-            // 
-            // выбратьВсеКнигиToolStripMenuItem
-            // 
-            this.выбратьВсеКнигиToolStripMenuItem.Name = "выбратьВсеКнигиToolStripMenuItem";
-            this.выбратьВсеКнигиToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.выбратьВсеКнигиToolStripMenuItem.Text = "Выбрать все книги";
-            // 
-            // видToolStripMenuItem
-            // 
-            this.видToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.размерОкнаToolStripMenuItem,
-            this.панельУправленияToolStripMenuItem});
-            this.видToolStripMenuItem.Name = "видToolStripMenuItem";
-            this.видToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.видToolStripMenuItem.Text = "Вид";
-            // 
-            // размерОкнаToolStripMenuItem
-            // 
-            this.размерОкнаToolStripMenuItem.Name = "размерОкнаToolStripMenuItem";
-            this.размерОкнаToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.размерОкнаToolStripMenuItem.Text = "Размер окна";
-            // 
-            // панельУправленияToolStripMenuItem
-            // 
-            this.панельУправленияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.кнопкаДобавитьToolStripMenuItem,
-            this.кнопкаУдалитьToolStripMenuItem,
-            this.кнопкаИзменитьToolStripMenuItem,
-            this.кнопкаПрочитаноToolStripMenuItem});
-            this.панельУправленияToolStripMenuItem.Name = "панельУправленияToolStripMenuItem";
-            this.панельУправленияToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.панельУправленияToolStripMenuItem.Text = "Панель управления";
-            // 
-            // кнопкаДобавитьToolStripMenuItem
-            // 
-            this.кнопкаДобавитьToolStripMenuItem.Name = "кнопкаДобавитьToolStripMenuItem";
-            this.кнопкаДобавитьToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.кнопкаДобавитьToolStripMenuItem.Text = "Кнопка \"Добавить\"";
-            // 
-            // кнопкаУдалитьToolStripMenuItem
-            // 
-            this.кнопкаУдалитьToolStripMenuItem.Name = "кнопкаУдалитьToolStripMenuItem";
-            this.кнопкаУдалитьToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.кнопкаУдалитьToolStripMenuItem.Text = "Кнопка \"Удалить\"";
-            // 
-            // кнопкаИзменитьToolStripMenuItem
-            // 
-            this.кнопкаИзменитьToolStripMenuItem.Name = "кнопкаИзменитьToolStripMenuItem";
-            this.кнопкаИзменитьToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.кнопкаИзменитьToolStripMenuItem.Text = "Кнопка \"Изменить\"";
-            // 
-            // кнопкаПрочитаноToolStripMenuItem
-            // 
-            this.кнопкаПрочитаноToolStripMenuItem.Name = "кнопкаПрочитаноToolStripMenuItem";
-            this.кнопкаПрочитаноToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.кнопкаПрочитаноToolStripMenuItem.Text = "Кнопка \"Прочитано\"";
-            // 
-            // справкаToolStripMenuItem
-            // 
-            this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справкаToolStripMenuItem1,
-            this.оПрограммеToolStripMenuItem,
-            this.приветствиеToolStripMenuItem});
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.справкаToolStripMenuItem.Text = "Справка";
-            // 
-            // справкаToolStripMenuItem1
-            // 
-            this.справкаToolStripMenuItem1.Name = "справкаToolStripMenuItem1";
-            this.справкаToolStripMenuItem1.ShortcutKeyDisplayString = "F1";
-            this.справкаToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.справкаToolStripMenuItem1.Text = "Справка";
-            this.справкаToolStripMenuItem1.Click += new System.EventHandler(this.СправкаToolStripMenuItem1_Click);
-            // 
-            // оПрограммеToolStripMenuItem
-            // 
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
-            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.ОПрограммеToolStripMenuItem_Click);
-            // 
-            // приветствиеToolStripMenuItem
-            // 
-            this.приветствиеToolStripMenuItem.Name = "приветствиеToolStripMenuItem";
-            this.приветствиеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.приветствиеToolStripMenuItem.Text = "Приветствие";
-            this.приветствиеToolStripMenuItem.Click += new System.EventHandler(this.ПриветствиеToolStripMenuItem_Click);
             // 
             // editReadedPagesButton
             // 
@@ -477,6 +229,18 @@
             this.editButton.UseVisualStyleBackColor = false;
             this.editButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
+            // errorPanel
+            // 
+            this.errorPanel.BackColor = System.Drawing.Color.Transparent;
+            this.errorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.errorPanel.Controls.Add(this.errorButton);
+            this.errorPanel.Controls.Add(this.errorLabel);
+            this.errorPanel.Location = new System.Drawing.Point(507, 3);
+            this.errorPanel.Name = "errorPanel";
+            this.errorPanel.Size = new System.Drawing.Size(345, 55);
+            this.errorPanel.TabIndex = 6;
+            this.errorPanel.Visible = false;
+            // 
             // errorButton
             // 
             this.errorButton.BackColor = System.Drawing.Color.Transparent;
@@ -493,6 +257,21 @@
             this.errorButton.TabIndex = 8;
             this.errorButton.UseVisualStyleBackColor = false;
             this.errorButton.Click += new System.EventHandler(this.ErrorButton_Click);
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.errorLabel.BackColor = System.Drawing.Color.White;
+            this.errorLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.errorLabel.Location = new System.Drawing.Point(54, 3);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.ReadOnly = true;
+            this.errorLabel.Size = new System.Drawing.Size(285, 45);
+            this.errorLabel.TabIndex = 5;
+            this.errorLabel.Text = "<error code>";
             // 
             // deleteButton
             // 
@@ -526,11 +305,35 @@
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // menu
+            // 
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.правкаToolStripMenuItem,
+            this.справкаToolStripMenuItem});
+            this.menu.Location = new System.Drawing.Point(0, 0);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(884, 24);
+            this.menu.TabIndex = 5;
+            this.menu.Text = "menuStrip1";
+            // 
+            // правкаToolStripMenuItem
+            // 
+            this.правкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьКнигуToolStripMenuItem,
+            this.удалитьКнигуToolStripMenuItem,
+            this.редактироватьКнигуToolStripMenuItem,
+            this.редактироватьКолвоПрочитанныхToolStripMenuItem,
+            this.выбратьВсеКнигиToolStripMenuItem});
+            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
+            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.правкаToolStripMenuItem.Text = "Правка";
+            // 
             // добавитьКнигуToolStripMenuItem
             // 
             this.добавитьКнигуToolStripMenuItem.Image = global::Ltr.Properties.Resources.add_ico;
             this.добавитьКнигуToolStripMenuItem.Name = "добавитьКнигуToolStripMenuItem";
             this.добавитьКнигуToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+N";
+            this.добавитьКнигуToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.добавитьКнигуToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.добавитьКнигуToolStripMenuItem.Text = "Добавить книгу";
             this.добавитьКнигуToolStripMenuItem.Click += new System.EventHandler(this.ДобавитьКнигуToolStripMenuItem_Click);
@@ -539,7 +342,8 @@
             // 
             this.удалитьКнигуToolStripMenuItem.Image = global::Ltr.Properties.Resources.delete_ico;
             this.удалитьКнигуToolStripMenuItem.Name = "удалитьКнигуToolStripMenuItem";
-            this.удалитьКнигуToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Del";
+            this.удалитьКнигуToolStripMenuItem.ShortcutKeyDisplayString = "Del";
+            this.удалитьКнигуToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.удалитьКнигуToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.удалитьКнигуToolStripMenuItem.Text = "Удалить книгу";
             this.удалитьКнигуToolStripMenuItem.Click += new System.EventHandler(this.УдалитьКнигуToolStripMenuItem_Click);
@@ -549,6 +353,7 @@
             this.редактироватьКнигуToolStripMenuItem.Image = global::Ltr.Properties.Resources.change_ico;
             this.редактироватьКнигуToolStripMenuItem.Name = "редактироватьКнигуToolStripMenuItem";
             this.редактироватьКнигуToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+E";
+            this.редактироватьКнигуToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.редактироватьКнигуToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.редактироватьКнигуToolStripMenuItem.Text = "Редактировать книгу";
             this.редактироватьКнигуToolStripMenuItem.Click += new System.EventHandler(this.РедактироватьКнигуToolStripMenuItem_Click);
@@ -558,9 +363,60 @@
             this.редактироватьКолвоПрочитанныхToolStripMenuItem.Image = global::Ltr.Properties.Resources.bookmark_ico;
             this.редактироватьКолвоПрочитанныхToolStripMenuItem.Name = "редактироватьКолвоПрочитанныхToolStripMenuItem";
             this.редактироватьКолвоПрочитанныхToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+R";
+            this.редактироватьКолвоПрочитанныхToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.редактироватьКолвоПрочитанныхToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.редактироватьКолвоПрочитанныхToolStripMenuItem.Text = "Прочитано страниц";
             this.редактироватьКолвоПрочитанныхToolStripMenuItem.Click += new System.EventHandler(this.РедактироватьКолвоПрочитанныхToolStripMenuItem_Click);
+            // 
+            // выбратьВсеКнигиToolStripMenuItem
+            // 
+            this.выбратьВсеКнигиToolStripMenuItem.Name = "выбратьВсеКнигиToolStripMenuItem";
+            this.выбратьВсеКнигиToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+A";
+            this.выбратьВсеКнигиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.выбратьВсеКнигиToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.выбратьВсеКнигиToolStripMenuItem.Text = "Выбрать все книги";
+            this.выбратьВсеКнигиToolStripMenuItem.Click += new System.EventHandler(this.ВыбратьВсеКнигиToolStripMenuItem_Click);
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.справкаToolStripMenuItem1,
+            this.оПрограммеToolStripMenuItem,
+            this.приветствиеToolStripMenuItem,
+            this.выходToolStripMenuItem});
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // справкаToolStripMenuItem1
+            // 
+            this.справкаToolStripMenuItem1.Name = "справкаToolStripMenuItem1";
+            this.справкаToolStripMenuItem1.ShortcutKeyDisplayString = "F1";
+            this.справкаToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.справкаToolStripMenuItem1.Text = "Справка";
+            this.справкаToolStripMenuItem1.Click += new System.EventHandler(this.СправкаToolStripMenuItem1_Click);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.ОПрограммеToolStripMenuItem_Click);
+            // 
+            // приветствиеToolStripMenuItem
+            // 
+            this.приветствиеToolStripMenuItem.Name = "приветствиеToolStripMenuItem";
+            this.приветствиеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.приветствиеToolStripMenuItem.Text = "Приветствие";
+            this.приветствиеToolStripMenuItem.Click += new System.EventHandler(this.ПриветствиеToolStripMenuItem_Click);
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.ShortcutKeyDisplayString = "Alt+Q";
+            this.выходToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Q)));
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Text = "Выход";
             // 
             // Ltr
             // 
@@ -578,7 +434,6 @@
             this.Name = "Ltr";
             this.Text = "Литература";
             this.Load += new System.EventHandler(this.Ltr_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ltr_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.tablePanel.ResumeLayout(false);
             this.tablePanel.PerformLayout();
@@ -607,36 +462,18 @@
         private System.Windows.Forms.Button editReadedPagesButton;
         public System.Windows.Forms.ComboBox statusComboBox;
         public System.Windows.Forms.TextBox searchBox;
-        private System.Windows.Forms.Button returnChangesButton;
-        private System.Windows.Forms.Button cancelChangesButton;
         private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem удалитьБилиотекуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem правкаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отменитьИзмененияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вернутьИзмененияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem добавитьКнигуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьКнигуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem редактироватьКнигуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem редактироватьКолвоПрочитанныхToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выбратьВсеКнигиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem размерОкнаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem панельУправленияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem кнопкаДобавитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem кнопкаУдалитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem кнопкаИзменитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem кнопкаПрочитаноToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem приветствиеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
     }
 }
 

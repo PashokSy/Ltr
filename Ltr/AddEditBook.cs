@@ -85,29 +85,20 @@ namespace Ltr
                         parentForm.library.RemoteBook((string)parentForm.dataGrid.CurrentRow.Cells[0].Value);
                         parentForm.dataGrid.Rows.Remove(parentForm.dataGrid.CurrentRow);                        
                     }
-                    //Добаляем книгу в таблицу
+                    
                     parentForm.dataGrid.Rows.Add(newBook.title, newBook.authorLastname, newBook.pagesReaded, newBook.pagesTotal, newBook.progress);
-                    //Добавляет книгу в библиотеку
                     library.StoreBook(newBook);
-                    //Сохраняет изменения в файл
                     library.Save(parentForm.libraryPath);
-
-                    //Исправлен баг с перепрыгиванием на другой ряд при редактировании книги. boiboiyeaboi
-                    int RememberRowIndex = parentForm.dataGrid.CurrentRow.Index;
-                    parentForm.dataGrid.Sort(parentForm.dataGrid.Columns[0], ListSortDirection.Ascending);
-                    parentForm.dataGrid.ClearSelection();
-                    parentForm.dataGrid.Rows[RememberRowIndex].Cells[0].Selected = true;
-                    parentForm.dataGrid.CurrentCell = parentForm.dataGrid.Rows[RememberRowIndex].Cells[0];
 
                     if (addEditButton.Text == "Добавить")
                     {
-                        //Чисто-чисто чистим боксы
                         titleTextBox.Clear();
                         authorLastnameTextBox.Clear();
                         pagesTotalTextBox.Clear();
                         pagesReadedTexBox.Clear();
                         commentaryTextBox.Clear();
                     }
+                    this.Close();
                 }
                 else
                 {
@@ -160,11 +151,13 @@ namespace Ltr
             OnlyDigitInput(e);
         }
 
+        /// <summary>
+        /// Проверка заполнености полей
+        /// </summary>
+        /// <returns></returns>
         private bool obligatoryField()
         {
-            if (titleTextBox.Text.Length == 0 ||
-                    authorLastnameTextBox.Text.Length == 0 ||
-                    pagesTotalTextBox.Text.Length == 0)
+            if (titleTextBox.Text.Length == 0 || authorLastnameTextBox.Text.Length == 0 || pagesTotalTextBox.Text.Length == 0)
                 return false;
 
             if (titleTextBox.Text.Length == 0 ||
@@ -181,10 +174,15 @@ namespace Ltr
                     return true;
                 else
                     return false;
-
             }
 
             return true;
+        }
+
+        private void AddEditBook_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                AddEditButton_Click(sender, e);
         }
     }
 }

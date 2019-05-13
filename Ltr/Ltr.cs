@@ -10,114 +10,64 @@ namespace Ltr
 {
     public partial class Ltr : Form
     {
-        //Создание библиотеки книг и заполнение их из файла в корневой папке
         public BooksDictionary library = new BooksDictionary();
-
-        //пока что он общий. (добавить функционал выбора)
         public string libraryPath = "library.txt";
 
         public Ltr()
         {
             InitializeComponent();
-            statusComboBox.Text = "Показать все книги";
+            statusComboBox.Text = "Сейчас читаю";
         }
+
+
 
         /// <summary>
         /// Считывание нужной литератру
         /// </summary>
         public void LoadDataToGrid(string status, string searchBoxText)
         {
-            if (searchBox.Text.Length == 0)
+            try
             {
-                if (statusComboBox.Text == "Показать все книги")
-                {
-                    library = BooksDictionary.Load(libraryPath);
-                    if (library != null)
-                    {
-                        dataGrid.Rows.Clear(); //очистка старой сетки перед добавлением новой                
-                        foreach (KeyValuePair<string, ILiterature> book in library)
-                        {
-                            dataGrid.Rows.Add(book.Key, book.Value.authorLastname,
-                                                    book.Value.pagesReaded, book.Value.pagesTotal, book.Value.progress);
-                        }
-                        dataGrid.Sort(dataGrid.Columns[0], ListSortDirection.Ascending);
-                    }
-                    else
-                    {
-                        ErrorMessage(true, "File not found/Corrupted. \nSet path to your library or create new");
-                    }
-                }
-                else
-                {
-                    library = BooksDictionary.Load(libraryPath);
-                    if (library != null)
-                    {
-                        dataGrid.Rows.Clear(); //очистка старой сетки перед добавлением новой                
-                        foreach (KeyValuePair<string, ILiterature> book in library)
-                        {
-                            if (book.Value.status == statusComboBox.Text)
-                            {
-                                dataGrid.Rows.Add(book.Key, book.Value.authorLastname,
-                                                        book.Value.pagesReaded, book.Value.pagesTotal, book.Value.progress);
-                            }
-                        }
-                        dataGrid.Sort(dataGrid.Columns[0], ListSortDirection.Ascending);
-                    }
-                    else
-                    {
-                        ErrorMessage(true, "File not found/Corrupted. \nSet path to your library or create new");
-                    }
-                }
-            }
-            else
-            {
-                if (statusComboBox.Text == "Показать все книги")
-                {
-                    library = BooksDictionary.Load(libraryPath);
-                    if (library != null)
-                    {
-                        dataGrid.Rows.Clear(); //очистка старой сетки перед добавлением новой                
-                        foreach (KeyValuePair<string, ILiterature> book in library)
-                        {
-                            if (book.Key.Contains(searchBox.Text) || book.Value.authorLastname.Contains(searchBox.Text) || book.Value.commentary.Contains(searchBox.Text))
-                            {
-                                dataGrid.Rows.Add(book.Key, book.Value.authorLastname,
-                                                        book.Value.pagesReaded, book.Value.pagesTotal, book.Value.progress);
-                            }
-                        }
-                        dataGrid.Sort(dataGrid.Columns[0], ListSortDirection.Ascending);
-                    }
-                    else
-                    {
-                        ErrorMessage(true, "File not found/Corrupted. \nSet path to your library or create new");
-                    }
-                }
-                else
-                {
-                    library = BooksDictionary.Load(libraryPath);
-                    if (library != null)
-                    {
-                        dataGrid.Rows.Clear(); //очистка старой сетки перед добавлением новой                
-                        foreach (KeyValuePair<string, ILiterature> book in library)
-                        {
-                            if (book.Value.status == statusComboBox.Text)
-                            {
-                                if (book.Key.Contains(searchBox.Text) || book.Value.authorLastname.Contains(searchBox.Text))
-                                {
-                                    dataGrid.Rows.Add(book.Key, book.Value.authorLastname,
-                                                        book.Value.pagesReaded, book.Value.pagesTotal, book.Value.progress);
-                                }
-                            }
-                        }
-                        dataGrid.Sort(dataGrid.Columns[0], ListSortDirection.Ascending);
-                    }
-                    else
-                    {
-                        ErrorMessage(true, "File not found/Corrupted. \nSet path to your library or create new");
-                    }
-                }
-            }
+                library = BooksDictionary.Load(libraryPath);
+                dataGrid.Rows.Clear();
 
+
+                foreach (KeyValuePair<string, ILiterature> book in library)
+                {
+                    if (statusComboBox.Text == "Показать все книги" && SeatchBoxValidation(book))
+                    {
+                        dataGrid.Rows.Add(book.Key, book.Value.authorLastname,
+                                                book.Value.pagesReaded, book.Value.pagesTotal, book.Value.progress);
+                    }
+
+                    if (book.Value.status == statusComboBox.Text && SeatchBoxValidation(book))
+                    {
+                        dataGrid.Rows.Add(book.Key, book.Value.authorLastname,
+                                            book.Value.pagesReaded, book.Value.pagesTotal, book.Value.progress);
+                    }
+                }
+
+                dataGrid.Sort(dataGrid.Columns[0], ListSortDirection.Ascending);
+            }
+            catch (Exception exception)
+            {
+                ErrorMessage(true, exception.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Логика searchBox'a
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns></returns>
+        private bool SeatchBoxValidation(KeyValuePair<string, ILiterature> book)
+        {
+            if (book.Key.ToLower().Contains(searchBox.Text.ToLower())
+                                || book.Value.authorLastname.ToLower().Contains(searchBox.Text.ToLower())
+                                || book.Value.commentary.ToLower().Contains(searchBox.Text.ToLower()))
+            { return true; }
+
+            return false;
         }
 
         /// <summary>
@@ -169,49 +119,6 @@ namespace Ltr
             ErrorMessage(false);
         }
 
-        /// <summary>
-        /// Хоткеи
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Ltr_KeyDown(object sender, KeyEventArgs e)
-        {
-            //Создание новой книги Ctrl+N
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.N)
-            {
-                OpenAddForm();
-            }
-
-            //Удаление книги            
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Delete)
-            {
-                DeleteBook();
-            }
-
-            //Редактирование книги
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.E)
-            {
-                EditBook();
-            }
-
-            //Редактирование прочитанных страниц
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.R)
-            {
-                SetReaded();
-            }
-
-            //Справка  
-            if (e.KeyCode == Keys.F1)
-            {
-                OpenHelpForm();
-            }
-
-            //Выход  
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Q)
-            {
-                Application.Exit();
-            }
-        }
 
         /// <summary>
         /// Редактирование прочитанных страниц
@@ -305,16 +212,16 @@ namespace Ltr
         {
             DialogResult dialogResult = new DialogResult();
             if (dataGrid.SelectedRows.Count > 1)
-                dialogResult = MessageBox.Show("Редактирование нескольки книг сразу невозможно", "Редактирование", MessageBoxButtons.OKCancel);
-            else if (dataGrid.SelectedRows.Count == 1)
-                dialogResult = MessageBox.Show("Редактировать книгу?", "Редактирование", MessageBoxButtons.OKCancel);
-            else
-                dialogResult = MessageBox.Show("Не выбрано ни одного ряда", "Редактирование", MessageBoxButtons.RetryCancel);
-
-            if (dialogResult == DialogResult.OK)
             {
-                OpenEditForm();
+                dialogResult = MessageBox.Show("Редактирование нескольки книг сразу невозможно", "Редактирование");
+                return;
             }
+            if (dataGrid.SelectedRows.Count == 0)
+            {
+                dialogResult = MessageBox.Show("Не выбрано ни одного ряда", "Редактирование");
+                return;
+            }
+            OpenEditForm();
         }
 
         /// <summary>
@@ -376,7 +283,11 @@ namespace Ltr
 
         private void УдалитьКнигуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DeleteBook();
+            if (searchBox.ContainsFocus)
+            {
+                searchBox.SelectedText = "";
+            }
+            else DeleteBook();
         }
 
         private void РедактироватьКнигуToolStripMenuItem_Click(object sender, EventArgs e)
@@ -401,9 +312,9 @@ namespace Ltr
 
         private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutBox helpForm = new AboutBox();
-            helpForm.Owner = this;
-            helpForm.ShowDialog();
+            AboutBox aboutForm = new AboutBox();
+            aboutForm.Owner = this;
+            aboutForm.ShowDialog();
         }
 
         private void ПриветствиеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -411,6 +322,11 @@ namespace Ltr
             HelloForm helloForm = new HelloForm();
             helloForm.Owner = this;
             helloForm.ShowDialog();
+        }
+
+        private void ВыбратьВсеКнигиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGrid.SelectAll();
         }
     }
 }

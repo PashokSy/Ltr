@@ -184,7 +184,8 @@
             this.statusComboBox.Items.AddRange(new object[] {
             "Сейчас читаю",
             "Обязательно прочту",
-            "Может прочту"});
+            "Может прочту",
+            "Прочитано"});
             this.statusComboBox.Location = new System.Drawing.Point(17, 415);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(580, 33);
@@ -214,10 +215,12 @@
             this.Controls.Add(this.labelTitle);
             this.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "AddEditBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AddEditBook_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
