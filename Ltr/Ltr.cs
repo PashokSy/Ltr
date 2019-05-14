@@ -30,20 +30,16 @@ namespace Ltr
             {
                 library = BooksDictionary.Load(libraryPath);
                 dataGrid.Rows.Clear();
-
-
+                
                 foreach (KeyValuePair<string, ILiterature> book in library)
                 {
-                    if (statusComboBox.Text == "Показать все книги" && SeatchBoxValidation(book))
+                    if (statusComboBox.Text == "Показать все книги")
                     {
-                        dataGrid.Rows.Add(book.Key, book.Value.authorLastname,
-                                                book.Value.pagesReaded, book.Value.pagesTotal, book.Value.progress);
+                        LoadDataLogic(book);
                     }
-
-                    if (book.Value.status == statusComboBox.Text && SeatchBoxValidation(book))
+                    if (book.Value.status == statusComboBox.Text)
                     {
-                        dataGrid.Rows.Add(book.Key, book.Value.authorLastname,
-                                            book.Value.pagesReaded, book.Value.pagesTotal, book.Value.progress);
+                        LoadDataLogic(book);
                     }
                 }
 
@@ -56,18 +52,22 @@ namespace Ltr
         }
 
         /// <summary>
-        /// Логика searchBox'a
+        /// Логика заполненния таблицы
         /// </summary>
         /// <param name="book"></param>
         /// <returns></returns>
-        private bool SeatchBoxValidation(KeyValuePair<string, ILiterature> book)
+        private void LoadDataLogic(KeyValuePair<string, ILiterature> book)
         {
             if (book.Key.ToLower().Contains(searchBox.Text.ToLower())
                                 || book.Value.authorLastname.ToLower().Contains(searchBox.Text.ToLower())
                                 || book.Value.commentary.ToLower().Contains(searchBox.Text.ToLower()))
-            { return true; }
-
-            return false;
+            {
+                dataGrid.Rows.Add(book.Key, 
+                                  book.Value.authorLastname,
+                                  book.Value.pagesReaded, 
+                                  book.Value.pagesTotal, 
+                                  book.Value.progress);
+            }
         }
 
         /// <summary>
@@ -221,28 +221,8 @@ namespace Ltr
                 dialogResult = MessageBox.Show("Не выбрано ни одного ряда", "Редактирование");
                 return;
             }
-            OpenEditForm();
-        }
-
-        /// <summary>
-        /// Метод открывающий окно "справка"
-        /// </summary>
-        private void OpenHelpForm()
-        {
-            HelpForm helpForm = new HelpForm();
-            helpForm.Owner = this;
-            helpForm.ShowDialog();
-        }
-
-        /// <summary>
-        /// Открыть "справку"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HelpLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            OpenHelpForm();
-        }
+            OpenEditForm();        
+        }        
 
         /// <summary>
         /// Кнопка редактирование прочитанных страниц
@@ -300,14 +280,11 @@ namespace Ltr
             SetReaded();
         }
 
-        private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void СправкаToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenHelpForm();
+            HelpForm helpForm = new HelpForm();
+            helpForm.Owner = this;
+            helpForm.ShowDialog();
         }
 
         private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -327,6 +304,11 @@ namespace Ltr
         private void ВыбратьВсеКнигиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGrid.SelectAll();
+        }
+
+        private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

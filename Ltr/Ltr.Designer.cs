@@ -104,7 +104,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGrid.GridColor = System.Drawing.Color.White;
+            this.dataGrid.GridColor = System.Drawing.Color.Black;
             this.dataGrid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGrid.Location = new System.Drawing.Point(3, 61);
             this.dataGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -392,21 +392,21 @@
             // 
             this.справкаToolStripMenuItem1.Name = "справкаToolStripMenuItem1";
             this.справкаToolStripMenuItem1.ShortcutKeyDisplayString = "F1";
-            this.справкаToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.справкаToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
             this.справкаToolStripMenuItem1.Text = "Справка";
             this.справкаToolStripMenuItem1.Click += new System.EventHandler(this.СправкаToolStripMenuItem1_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.ОПрограммеToolStripMenuItem_Click);
             // 
             // приветствиеToolStripMenuItem
             // 
             this.приветствиеToolStripMenuItem.Name = "приветствиеToolStripMenuItem";
-            this.приветствиеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.приветствиеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.приветствиеToolStripMenuItem.Text = "Приветствие";
             this.приветствиеToolStripMenuItem.Click += new System.EventHandler(this.ПриветствиеToolStripMenuItem_Click);
             // 
@@ -415,8 +415,9 @@
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.ShortcutKeyDisplayString = "Alt+Q";
             this.выходToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Q)));
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
             // 
             // Ltr
             // 
