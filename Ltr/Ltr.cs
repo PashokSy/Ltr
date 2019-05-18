@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 using BooksLibrary;
@@ -13,16 +14,16 @@ namespace Ltr
         public BooksDictionary library = new BooksDictionary();
         public string libraryPath = "library.txt";
 
+
         public Ltr()
         {
             InitializeComponent();
+
             statusComboBox.Text = "Сейчас читаю";
         }
 
-
-
         /// <summary>
-        /// Считывание нужной литератру
+        /// Заполнение таблицы
         /// </summary>
         public void LoadDataToGrid(string status, string searchBoxText)
         {
@@ -30,7 +31,7 @@ namespace Ltr
             {
                 library = BooksDictionary.Load(libraryPath);
                 dataGrid.Rows.Clear();
-                
+
                 foreach (KeyValuePair<string, ILiterature> book in library)
                 {
                     if (statusComboBox.Text == "Показать все книги")
@@ -45,27 +46,31 @@ namespace Ltr
 
                 dataGrid.Sort(dataGrid.Columns[0], ListSortDirection.Ascending);
             }
-            catch (Exception exception)
+            catch 
             {
-                ErrorMessage(true, exception.ToString());
+                AddEditBook addBook = new AddEditBook(library, "new");
+                addBook.Owner = this;
+                addBook.ShowDialog();
+
+                //ErrorMessage(true, exception.ToString());
             }
         }
 
         /// <summary>
         /// Логика заполненния таблицы
         /// </summary>
-        /// <param name="book"></param>
-        /// <returns></returns>
+        /// <param name="book">Книга из dictionary</param>
+        /// <returns>Книuга прошедшая отбор</returns>
         private void LoadDataLogic(KeyValuePair<string, ILiterature> book)
         {
             if (book.Key.ToLower().Contains(searchBox.Text.ToLower())
                                 || book.Value.authorLastname.ToLower().Contains(searchBox.Text.ToLower())
                                 || book.Value.commentary.ToLower().Contains(searchBox.Text.ToLower()))
             {
-                dataGrid.Rows.Add(book.Key, 
+                dataGrid.Rows.Add(book.Key,
                                   book.Value.authorLastname,
-                                  book.Value.pagesReaded, 
-                                  book.Value.pagesTotal, 
+                                  book.Value.pagesReaded,
+                                  book.Value.pagesTotal,
                                   book.Value.progress);
             }
         }
@@ -125,6 +130,17 @@ namespace Ltr
         /// </summary>
         public void SetReaded()
         {
+            DialogResult dialogResult = new DialogResult();
+            if (dataGrid.SelectedRows.Count > 1)
+            {
+                dialogResult = MessageBox.Show("Редактирование нескольки книг сразу невозможно", "Редактирование");
+                return;
+            }
+            if (dataGrid.SelectedRows.Count == 0)
+            {
+                dialogResult = MessageBox.Show("Не выбрано ни одного ряда", "Редактирование");
+                return;
+            }
             OpenEditReadedPagesForm();
         }
 
@@ -133,10 +149,17 @@ namespace Ltr
         /// </summary>
         private void OpenEditReadedPagesForm()
         {
-            ILiterature book = library.FindBook((string)dataGrid.CurrentRow.Cells[0].Value);
-            EditReadedPages setReadedPages = new EditReadedPages(library, book);
-            setReadedPages.Owner = this;
-            setReadedPages.ShowDialog();
+            try
+            {
+                ILiterature book = library.FindBook((string)dataGrid.CurrentRow.Cells[0].Value);
+                EditReadedPages setReadedPages = new EditReadedPages(library, book);
+                setReadedPages.Owner = this;
+                setReadedPages.ShowDialog();
+            }
+            catch (Exception exception)
+            {
+                ErrorMessage(true, exception.ToString());
+            }
         }
 
         /// <summary>
@@ -144,9 +167,16 @@ namespace Ltr
         /// </summary>
         private void OpenAddForm()
         {
-            AddEditBook addBook = new AddEditBook(library);
-            addBook.Owner = this;
-            addBook.ShowDialog();
+            try
+            {
+                AddEditBook addBook = new AddEditBook(library);
+                addBook.Owner = this;
+                addBook.ShowDialog();
+            }
+            catch (Exception exception)
+            {
+                ErrorMessage(true, exception.ToString());
+            }
         }
 
         /// <summary>
@@ -154,10 +184,17 @@ namespace Ltr
         /// </summary>
         private void OpenEditForm()
         {
-            ILiterature book = library.FindBook((string)dataGrid.CurrentRow.Cells[0].Value);
-            AddEditBook addBook = new AddEditBook(library, book);
-            addBook.Owner = this;
-            addBook.ShowDialog();
+            try
+            {
+                ILiterature book = library.FindBook((string)dataGrid.CurrentRow.Cells[0].Value);
+                AddEditBook addBook = new AddEditBook(library, book);
+                addBook.Owner = this;
+                addBook.ShowDialog();
+            }
+            catch (Exception exception)
+            {
+                ErrorMessage(true, exception.ToString());
+            }
         }
 
         /// <summary>
@@ -221,8 +258,8 @@ namespace Ltr
                 dialogResult = MessageBox.Show("Не выбрано ни одного ряда", "Редактирование");
                 return;
             }
-            OpenEditForm();        
-        }        
+            OpenEditForm();
+        }
 
         /// <summary>
         /// Кнопка редактирование прочитанных страниц
@@ -231,7 +268,7 @@ namespace Ltr
         /// <param name="e"></param>
         private void EditReadedPagesButton_Click(object sender, EventArgs e)
         {
-            OpenEditReadedPagesForm();
+            SetReaded();
         }
 
         /// <summary>
@@ -253,8 +290,7 @@ namespace Ltr
         {
             LoadDataToGrid(statusComboBox.Text, searchBox.Text);
         }
-
-
+        
         //Кнопки меню
         private void ДобавитьКнигуToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -282,23 +318,44 @@ namespace Ltr
 
         private void СправкаToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            HelpForm helpForm = new HelpForm();
-            helpForm.Owner = this;
-            helpForm.ShowDialog();
+            try
+            {
+                HelpForm helpForm = new HelpForm();
+                helpForm.Owner = this;
+                helpForm.ShowDialog();
+            }
+            catch (Exception exception)
+            {
+                ErrorMessage(true, exception.ToString());
+            }
         }
 
         private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutBox aboutForm = new AboutBox();
-            aboutForm.Owner = this;
-            aboutForm.ShowDialog();
+            try
+            {
+                AboutBox aboutForm = new AboutBox();
+                aboutForm.Owner = this;
+                aboutForm.ShowDialog();
+            }
+            catch (Exception exception)
+            {
+                ErrorMessage(true, exception.ToString());
+            }
         }
 
         private void ПриветствиеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HelloForm helloForm = new HelloForm();
-            helloForm.Owner = this;
-            helloForm.ShowDialog();
+            try
+            {
+                HelloForm helloForm = new HelloForm();
+                helloForm.Owner = this;
+                helloForm.ShowDialog();
+            }
+            catch (Exception exception)
+            {
+                ErrorMessage(true, exception.ToString());
+            }
         }
 
         private void ВыбратьВсеКнигиToolStripMenuItem_Click(object sender, EventArgs e)

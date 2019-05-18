@@ -43,22 +43,16 @@ namespace Ltr
                     Title: book.title,
                     AuthorLastname: book.authorLastname,
                     PagesTotal: book.pagesTotal,
-                    PagesReaded: (readedPagesTextBox.Text.Length == 0) ? 0 : Int32.Parse(readedPagesTextBox.Text));
+                    PagesReaded: (readedPagesTextBox.Text.Length == 0) ? 0 : Int32.Parse(readedPagesTextBox.Text),
+                    Commentary: book.commentary,
+                    Status: book.status);
                                 
                 parentForm.library.RemoteBook((string)parentForm.dataGrid.CurrentRow.Cells[0].Value);
                 parentForm.dataGrid.Rows.Remove(parentForm.dataGrid.CurrentRow);
-                //Добаляем книгу в таблицу
                 parentForm.dataGrid.Rows.Add(newBook.title, newBook.authorLastname, newBook.pagesReaded, newBook.pagesTotal, newBook.progress);
-                //Добавляет книгу в библиотеку
                 library.StoreBook(newBook);
-                //Сохраняет изменения в файл
                 library.Save(parentForm.libraryPath);
-                                
-                int RememberRowIndex = parentForm.dataGrid.CurrentRow.Index;
-                parentForm.dataGrid.Sort(parentForm.dataGrid.Columns[0], ListSortDirection.Ascending);
-                parentForm.dataGrid.ClearSelection();
-                parentForm.dataGrid.Rows[RememberRowIndex].Cells[0].Selected = true;
-                parentForm.dataGrid.CurrentCell = parentForm.dataGrid.Rows[RememberRowIndex].Cells[0];
+
                 this.Close();
             }
             catch (Exception exception)

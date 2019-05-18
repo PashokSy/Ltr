@@ -38,6 +38,7 @@
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
+            this.errorLabel.ForeColor = System.Drawing.Color.Maroon;
             this.errorLabel.Location = new System.Drawing.Point(12, 9);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(120, 25);

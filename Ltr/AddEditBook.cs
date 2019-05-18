@@ -33,6 +33,28 @@ namespace Ltr
         }
 
         /// <summary>
+        /// Конструктор на случай если файл не найден или в файле нету книг еще
+        /// </summary>
+        /// <param name="LtrBooksLibrary"></param>
+        public AddEditBook(BooksDictionary LtrBooksLibrary, string flag)
+        {
+            InitializeComponent();
+            try
+            {
+                errorLabel.Visible = true;
+                errorLabel.Text = "Добавь первую книгу";
+                statusComboBox.Text = "Может прочту";
+                addEditButton.Text = "Добавить";
+                this.Text = "Добавить первую книгу";
+                library = new BooksDictionary();
+            }
+            catch (Exception exception)
+            {
+                errorLabel.Text = exception.ToString();
+            }
+        }
+
+        /// <summary>
         /// Конструктор если нужно внести изменения в книгу
         /// </summary>
         /// <param name="LtrBooksLibrary"></param>
@@ -71,7 +93,7 @@ namespace Ltr
             {
                 Ltr parentForm = Owner as Ltr;
                 if (obligatoryField())
-                {                    
+                {
                     ILiterature newBook = new Book(
                         Title: titleTextBox.Text,
                         AuthorLastname: authorLastnameTextBox.Text,
@@ -81,11 +103,11 @@ namespace Ltr
                         Status: statusComboBox.Text);
 
                     if (addEditButton.Text == "Редактировать")
-                    {                        
+                    {
                         parentForm.library.RemoteBook((string)parentForm.dataGrid.CurrentRow.Cells[0].Value);
-                        parentForm.dataGrid.Rows.Remove(parentForm.dataGrid.CurrentRow);                        
+                        parentForm.dataGrid.Rows.Remove(parentForm.dataGrid.CurrentRow);
                     }
-                    
+
                     parentForm.dataGrid.Rows.Add(newBook.title, newBook.authorLastname, newBook.pagesReaded, newBook.pagesTotal, newBook.progress);
                     library.StoreBook(newBook);
                     library.Save(parentForm.libraryPath);
@@ -98,6 +120,7 @@ namespace Ltr
                         pagesReadedTexBox.Clear();
                         commentaryTextBox.Clear();
                     }
+
                     this.Close();
                 }
                 else
@@ -117,6 +140,9 @@ namespace Ltr
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
+            if (errorLabel.Text == "Добавь первую книгу")
+                Application.Exit();
+
             this.Close();
         }
 
